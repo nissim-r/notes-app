@@ -4,8 +4,9 @@ import {
   Scripts,
   createRootRoute,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
+import { applyThemeClass, useThemeStore } from "~/store/theme";
 import appCss from "~/styles.css?url";
 
 export const Route = createRootRoute({
@@ -43,31 +44,68 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 });
 
+function ThemeSync() {
+  const theme = useThemeStore((s) => s.theme);
+
+  useEffect(() => {
+    applyThemeClass(theme);
+  }, [theme]);
+
+  // Re-apply after rehydration from localStorage
+  useEffect(() => {
+    const unsub = useThemeStore.persist.onFinishHydration((state) => {
+      applyThemeClass(state.theme);
+    });
+    if (useThemeStore.persist.hasHydrated()) {
+      applyThemeClass(useThemeStore.getState().theme);
+    }
+    return unsub;
+  }, []);
+
+  return null;
+}
+
 function RootComponent() {
+  const theme = useThemeStore((s) => s.theme);
+
   return (
     <>
+      <ThemeSync />
       <Outlet />
       <Toaster
+        theme={theme}
         position="bottom-right"
         toastOptions={{
           className: "font-sans text-sm",
-          style: {
-            background: "#18181b",
-            color: "#fafafa",
-            border: "1px solid #27272a",
-            borderRadius: "10px",
-          },
+          style:
+            theme === "dark"
+              ? {
+                  background: "#18181b",
+                  color: "#fafafa",
+                  border: "1px solid #27272a",
+                  borderRadius: "10px",
+                }
+              : {
+                  background: "#18181b",
+                  color: "#fafafa",
+                  border: "1px solid #27272a",
+                  borderRadius: "10px",
+                },
         }}
       />
     </>
   );
 }
 
+/** Inline script: apply saved theme before paint to avoid flash */
+const THEME_BOOT_SCRIPT = `(function(){try{var raw=localStorage.getItem("calm-notes-theme");if(!raw)return;var parsed=JSON.parse(raw);var t=parsed&&parsed.state&&parsed.state.theme;if(t==="dark"){document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#09090b");}}catch(e){}})();`;
+
 function RootDocument({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>
       <body className="min-h-dvh isolate antialiased h-full">
         {children}
