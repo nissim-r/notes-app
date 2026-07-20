@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (html.dark) instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
@@ -27,6 +30,40 @@
   --color-olive-600: #6b7c3a;
 }
 
+/* Semantic surfaces — light (default) maps to warm zinc / white / amber */
+:root {
+  --surface-app: var(--color-zinc-50);
+  --surface-panel: var(--color-zinc-50);
+  --surface-editor: #ffffff;
+  --surface-hover: #f4f4f5cc;
+  --surface-selected: #e4e4e7b3;
+  --border: #e4e4e7cc;
+  --text-primary: var(--color-zinc-900);
+  --text-secondary: var(--color-zinc-800);
+  --text-muted: var(--color-zinc-500);
+  --text-faint: var(--color-zinc-400);
+  --accent: var(--color-amber-600);
+  --accent-hover: var(--color-amber-700);
+  --accent-soft: var(--color-amber-50);
+}
+
+/* Dark mode: zinc-950 app, zinc-900 panels, zinc-100 text, amber accents */
+.dark {
+  --surface-app: var(--color-zinc-950);
+  --surface-panel: var(--color-zinc-900);
+  --surface-editor: var(--color-zinc-900);
+  --surface-hover: #27272acc;
+  --surface-selected: #3f3f46b3;
+  --border: #27272acc;
+  --text-primary: var(--color-zinc-100);
+  --text-secondary: var(--color-zinc-200);
+  --text-muted: var(--color-zinc-400);
+  --text-faint: var(--color-zinc-500);
+  --accent: var(--color-amber-500);
+  --accent-hover: var(--color-amber-400);
+  --accent-soft: #451a03;
+}
+
 html,
 body,
 #root {
@@ -37,8 +74,8 @@ body,
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--color-zinc-50);
-  color: var(--color-zinc-900);
+  background: var(--surface-app);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -58,6 +95,12 @@ body {
 .quiet-scroll::-webkit-scrollbar-thumb:hover {
   background: var(--color-zinc-400);
 }
+.dark .quiet-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-zinc-700);
+}
+.dark .quiet-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-zinc-600);
+}
 
 /* Editor text area */
 .note-title {
@@ -73,22 +116,30 @@ body {
 .note-title::placeholder {
   color: var(--color-zinc-400);
 }
+.dark .note-body::placeholder,
+.dark .note-title::placeholder {
+  color: var(--color-zinc-600);
+}
 
 /* Focus rings — amber, restrained */
 .focus-amber:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-zinc-50), 0 0 0 4px var(--color-amber-500);
+  box-shadow: 0 0 0 2px var(--surface-app), 0 0 0 4px var(--color-amber-500);
 }
 
 .focus-amber:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-zinc-50), 0 0 0 4px var(--color-amber-500);
+  box-shadow: 0 0 0 2px var(--surface-app), 0 0 0 4px var(--color-amber-500);
 }
 
 /* Selection highlight */
 ::selection {
   background: var(--color-amber-100);
   color: var(--color-zinc-900);
+}
+.dark ::selection {
+  background: #78350f;
+  color: var(--color-zinc-100);
 }
 
 @keyframes fade-in {
