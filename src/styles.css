@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-/* Class-based dark mode (html.dark) instead of prefers-color-scheme */
+/* Class-based themes (html.dark / theme-christmas / theme-halloween) */
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant christmas (&:where(.theme-christmas, .theme-christmas *));
+@custom-variant halloween (&:where(.theme-halloween, .theme-halloween *));
 
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -30,38 +32,148 @@
   --color-olive-600: #6b7c3a;
 }
 
-/* Semantic surfaces — light (default) maps to warm zinc / white / amber */
-:root {
-  --surface-app: var(--color-zinc-50);
-  --surface-panel: var(--color-zinc-50);
+/* Semantic surfaces — light (default) */
+:root,
+[data-theme="light"] {
+  --surface-app: #fafafa;
+  --surface-panel: #fafafa;
   --surface-editor: #ffffff;
   --surface-hover: #f4f4f5cc;
   --surface-selected: #e4e4e7b3;
+  --surface-elevated: #ffffff;
   --border: #e4e4e7cc;
-  --text-primary: var(--color-zinc-900);
-  --text-secondary: var(--color-zinc-800);
-  --text-muted: var(--color-zinc-500);
-  --text-faint: var(--color-zinc-400);
-  --accent: var(--color-amber-600);
-  --accent-hover: var(--color-amber-700);
-  --accent-soft: var(--color-amber-50);
+  --border-strong: #d4d4d8;
+  --text-primary: #18181b;
+  --text-secondary: #27272a;
+  --text-muted: #71717a;
+  --text-faint: #a1a1aa;
+  --text-placeholder: #d4d4d8;
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --accent-soft: #fffbeb;
+  --accent-text: #ffffff;
+  --accent-ring: #f59e0b;
+  --pin: #f59e0b;
+  --danger-soft: #fef2f2;
+  --danger: #dc2626;
+  --overlay: rgba(24, 24, 27, 0.3);
+  --scrollbar: #d4d4d8;
+  --scrollbar-hover: #a1a1aa;
+  --saved-dot: #6b7c3a;
+  --kbd-bg: #f4f4f5;
+  --kbd-border: #e4e4e7;
+  --kbd-text: #52525b;
+  --selection-bg: #fef3c7;
+  --selection-text: #18181b;
+  --shadow-elevated: 0 25px 50px -12px rgba(24, 24, 27, 0.12);
 }
 
-/* Dark mode: zinc-950 app, zinc-900 panels, zinc-100 text, amber accents */
-.dark {
-  --surface-app: var(--color-zinc-950);
-  --surface-panel: var(--color-zinc-900);
-  --surface-editor: var(--color-zinc-900);
+/* Dark */
+.dark,
+[data-theme="dark"] {
+  --surface-app: #09090b;
+  --surface-panel: #09090b;
+  --surface-editor: #18181b;
   --surface-hover: #27272acc;
   --surface-selected: #3f3f46b3;
+  --surface-elevated: #18181b;
   --border: #27272acc;
-  --text-primary: var(--color-zinc-100);
-  --text-secondary: var(--color-zinc-200);
-  --text-muted: var(--color-zinc-400);
-  --text-faint: var(--color-zinc-500);
-  --accent: var(--color-amber-500);
-  --accent-hover: var(--color-amber-400);
+  --border-strong: #3f3f46;
+  --text-primary: #f4f4f5;
+  --text-secondary: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --text-faint: #71717a;
+  --text-placeholder: #52525b;
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
   --accent-soft: #451a03;
+  --accent-text: #09090b;
+  --accent-ring: #f59e0b;
+  --pin: #fbbf24;
+  --danger-soft: rgba(127, 29, 29, 0.35);
+  --danger: #f87171;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --scrollbar: #3f3f46;
+  --scrollbar-hover: #52525b;
+  --saved-dot: #84cc16;
+  --kbd-bg: #27272a;
+  --kbd-border: #3f3f46;
+  --kbd-text: #a1a1aa;
+  --selection-bg: #78350f;
+  --selection-text: #f4f4f5;
+  --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Christmas — pine green, cream snow, crimson & gold */
+.theme-christmas,
+[data-theme="christmas"] {
+  --surface-app: #0f2e1c;
+  --surface-panel: #123524;
+  --surface-editor: #1a3d2a;
+  --surface-hover: #1f4a32cc;
+  --surface-selected: #245c3cb3;
+  --surface-elevated: #1a3d2a;
+  --border: #2d5a4080;
+  --border-strong: #3d7354;
+  --text-primary: #f7f0e4;
+  --text-secondary: #ebe2d0;
+  --text-muted: #a8c4b0;
+  --text-faint: #7a9a84;
+  --text-placeholder: #5a7d66;
+  --accent: #c41e3a;
+  --accent-hover: #e23a55;
+  --accent-soft: #4a1520;
+  --accent-text: #fff8f0;
+  --accent-ring: #d4a017;
+  --pin: #d4a017;
+  --danger-soft: rgba(120, 20, 40, 0.45);
+  --danger: #ff6b81;
+  --overlay: rgba(8, 24, 14, 0.55);
+  --scrollbar: #3d7354;
+  --scrollbar-hover: #5a9a72;
+  --saved-dot: #d4a017;
+  --kbd-bg: #1f4a32;
+  --kbd-border: #3d7354;
+  --kbd-text: #c5dbc9;
+  --selection-bg: #6b1c2a;
+  --selection-text: #f7f0e4;
+  --shadow-elevated: 0 25px 50px -12px rgba(5, 20, 12, 0.55);
+}
+
+/* Halloween — midnight purple, charcoal, pumpkin orange */
+.theme-halloween,
+[data-theme="halloween"] {
+  --surface-app: #140a1f;
+  --surface-panel: #1a0f28;
+  --surface-editor: #1f1430;
+  --surface-hover: #2a1a40cc;
+  --surface-selected: #3a2558b3;
+  --surface-elevated: #241836;
+  --border: #3d2a5580;
+  --border-strong: #4d3668;
+  --text-primary: #f5efe6;
+  --text-secondary: #e8ddd0;
+  --text-muted: #b8a4c9;
+  --text-faint: #8a7499;
+  --text-placeholder: #5c4a6e;
+  --accent: #e85d04;
+  --accent-hover: #f48c06;
+  --accent-soft: #4a2008;
+  --accent-text: #1a0a00;
+  --accent-ring: #ff9f1c;
+  --pin: #ff9f1c;
+  --danger-soft: rgba(90, 20, 40, 0.45);
+  --danger: #ff6b6b;
+  --overlay: rgba(10, 4, 18, 0.6);
+  --scrollbar: #4d3668;
+  --scrollbar-hover: #6b4d8a;
+  --saved-dot: #9b5de5;
+  --kbd-bg: #2a1a40;
+  --kbd-border: #4d3668;
+  --kbd-text: #c9b8d9;
+  --selection-bg: #6b2d0a;
+  --selection-text: #f5efe6;
+  --shadow-elevated: 0 25px 50px -12px rgba(8, 2, 16, 0.6);
 }
 
 html,
@@ -89,17 +201,11 @@ body {
   background: transparent;
 }
 .quiet-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-zinc-300);
+  background: var(--scrollbar);
   border-radius: 999px;
 }
 .quiet-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-zinc-400);
-}
-.dark .quiet-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-zinc-700);
-}
-.dark .quiet-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-zinc-600);
+  background: var(--scrollbar-hover);
 }
 
 /* Editor text area */
@@ -114,32 +220,29 @@ body {
 
 .note-body::placeholder,
 .note-title::placeholder {
-  color: var(--color-zinc-400);
-}
-.dark .note-body::placeholder,
-.dark .note-title::placeholder {
-  color: var(--color-zinc-600);
+  color: var(--text-placeholder);
 }
 
-/* Focus rings — amber, restrained */
-.focus-amber:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--surface-app), 0 0 0 4px var(--color-amber-500);
-}
-
+/* Focus rings — theme accent */
+.focus-amber:focus,
 .focus-amber:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--surface-app), 0 0 0 4px var(--color-amber-500);
+  box-shadow: 0 0 0 2px var(--surface-app), 0 0 0 4px var(--accent-ring);
 }
 
 /* Selection highlight */
 ::selection {
-  background: var(--color-amber-100);
-  color: var(--color-zinc-900);
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
-.dark ::selection {
-  background: #78350f;
-  color: var(--color-zinc-100);
+
+/* Subtle seasonal flourishes */
+.theme-christmas .note-title {
+  letter-spacing: -0.02em;
+}
+
+.theme-halloween .note-title {
+  letter-spacing: -0.01em;
 }
 
 @keyframes fade-in {
@@ -167,4 +270,18 @@ body {
 
 .saving-dot {
   animation: save-pulse 1.2s ease-in-out infinite;
+}
+
+/* Theme picker swatches */
+.theme-swatch-light {
+  background: linear-gradient(135deg, #fafafa 50%, #d97706 50%);
+}
+.theme-swatch-dark {
+  background: linear-gradient(135deg, #18181b 50%, #f59e0b 50%);
+}
+.theme-swatch-christmas {
+  background: linear-gradient(135deg, #0f2e1c 33%, #c41e3a 33% 66%, #d4a017 66%);
+}
+.theme-swatch-halloween {
+  background: linear-gradient(135deg, #140a1f 33%, #e85d04 33% 66%, #9b5de5 66%);
 }
