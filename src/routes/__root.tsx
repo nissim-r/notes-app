@@ -6,7 +6,11 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
-import { applyThemeClass, useThemeStore } from "~/store/theme";
+import {
+  applyThemeClass,
+  isDarkishTheme,
+  useThemeStore,
+} from "~/store/theme";
 import appCss from "~/styles.css?url";
 
 export const Route = createRootRoute({
@@ -51,7 +55,6 @@ function ThemeSync() {
     applyThemeClass(theme);
   }, [theme]);
 
-  // Re-apply after rehydration from localStorage
   useEffect(() => {
     const unsub = useThemeStore.persist.onFinishHydration((state) => {
       applyThemeClass(state.theme);
@@ -73,24 +76,16 @@ function RootComponent() {
       <ThemeSync />
       <Outlet />
       <Toaster
-        theme={theme}
+        theme={isDarkishTheme(theme) ? "dark" : "light"}
         position="bottom-right"
         toastOptions={{
           className: "font-sans text-sm",
-          style:
-            theme === "dark"
-              ? {
-                  background: "#18181b",
-                  color: "#fafafa",
-                  border: "1px solid #27272a",
-                  borderRadius: "10px",
-                }
-              : {
-                  background: "#18181b",
-                  color: "#fafafa",
-                  border: "1px solid #27272a",
-                  borderRadius: "10px",
-                },
+          style: {
+            background: isDarkishTheme(theme) ? "#18181b" : "#18181b",
+            color: "#fafafa",
+            border: "1px solid #27272a",
+            borderRadius: "10px",
+          },
         }}
       />
     </>
@@ -98,7 +93,7 @@ function RootComponent() {
 }
 
 /** Inline script: apply saved theme before paint to avoid flash */
-const THEME_BOOT_SCRIPT = `(function(){try{var raw=localStorage.getItem("calm-notes-theme");if(!raw)return;var parsed=JSON.parse(raw);var t=parsed&&parsed.state&&parsed.state.theme;if(t==="dark"){document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#09090b");}}catch(e){}})();`;
+const THEME_BOOT_SCRIPT = `(function(){try{var raw=localStorage.getItem("calm-notes-theme");if(!raw)return;var parsed=JSON.parse(raw);var t=parsed&&parsed.state&&parsed.state.theme;if(!t)return;var root=document.documentElement;root.setAttribute("data-theme",t);root.classList.remove("dark","theme-christmas","theme-halloween");var colors={light:"#fafafa",dark:"#09090b",christmas:"#0f2e1c",halloween:"#140a1f"};if(t==="dark")root.classList.add("dark");if(t==="christmas")root.classList.add("theme-christmas");if(t==="halloween")root.classList.add("theme-halloween");var m=document.querySelector('meta[name="theme-color"]');if(m&&colors[t])m.setAttribute("content",colors[t]);}catch(e){}})();`;
 
 function RootDocument({ children }: { children: ReactNode }) {
   return (
