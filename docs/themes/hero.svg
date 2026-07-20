@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="Notes — calm writing">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#f4f4f5"/>
+    </linearGradient>
+    <filter id="card" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#18181b" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="420" fill="url(#heroBg)"/>
+  <!-- four mini windows -->
+  <!-- light -->
+  <g filter="url(#card)">
+    <rect x="48" y="70" width="260" height="220" rx="14" fill="#fff" stroke="#e4e4e7"/>
+    <rect x="48" y="70" width="90" height="220" rx="14" fill="#fafafa"/>
+    <rect x="138" y="70" width="1" height="220" fill="#e4e4e7"/>
+    <rect x="60" y="90" width="48" height="14" rx="4" fill="#d97706"/>
+    <rect x="60" y="120" width="66" height="8" rx="2" fill="#e4e4e7"/>
+    <rect x="60" y="140" width="66" height="28" rx="4" fill="#e4e4e7"/>
+    <rect x="60" y="178" width="50" height="6" rx="2" fill="#d4d4d8"/>
+    <rect x="156" y="100" width="120" height="12" rx="2" fill="#18181b"/>
+    <rect x="156" y="128" width="130" height="6" rx="2" fill="#d4d4d8"/>
+    <rect x="156" y="144" width="110" height="6" rx="2" fill="#d4d4d8"/>
+  </g>
+  <text x="178" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#52525b">Light</text>
+  <!-- dark -->
+  <g filter="url(#card)">
+    <rect x="328" y="70" width="260" height="220" rx="14" fill="#18181b" stroke="#27272a"/>
+    <rect x="328" y="70" width="90" height="220" rx="14" fill="#09090b"/>
+    <rect x="418" y="70" width="1" height="220" fill="#27272a"/>
+    <rect x="340" y="90" width="48" height="14" rx="4" fill="#f59e0b"/>
+    <rect x="340" y="120" width="66" height="8" rx="2" fill="#3f3f46"/>
+    <rect x="340" y="140" width="66" height="28" rx="4" fill="#3f3f46"/>
+    <rect x="340" y="178" width="50" height="6" rx="2" fill="#52525b"/>
+    <rect x="436" y="100" width="120" height="12" rx="2" fill="#f4f4f5"/>
+    <rect x="436" y="128" width="130" height="6" rx="2" fill="#3f3f46"/>
+    <rect x="436" y="144" width="110" height="6" rx="2" fill="#3f3f46"/>
+  </g>
+  <text x="458" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#a1a1aa">Dark</text>
+  <!-- christmas -->
+  <g filter="url(#card)">
+    <rect x="608" y="70" width="260" height="220" rx="14" fill="#1a3d2a" stroke="#2d5a40"/>
+    <rect x="608" y="70" width="90" height="220" rx="14" fill="#123524"/>
+    <rect x="698" y="70" width="1" height="220" fill="#2d5a40"/>
+    <rect x="620" y="90" width="48" height="14" rx="4" fill="#c41e3a"/>
+    <rect x="620" y="120" width="66" height="8" rx="2" fill="#3d7354"/>
+    <rect x="620" y="140" width="66" height="28" rx="4" fill="#245c3c"/>
+    <circle cx="672" cy="150" r="3" fill="#d4a017"/>
+    <rect x="620" y="178" width="50" height="6" rx="2" fill="#3d7354"/>
+    <rect x="716" y="100" width="120" height="12" rx="2" fill="#f7f0e4"/>
+    <rect x="716" y="128" width="130" height="6" rx="2" fill="#3d7354"/>
+    <rect x="716" y="144" width="110" height="6" rx="2" fill="#3d7354"/>
+  </g>
+  <text x="738" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#d4a017">Christmas</text>
+  <!-- halloween -->
+  <g filter="url(#card)">
+    <rect x="888" y="70" width="260" height="220" rx="14" fill="#1f1430" stroke="#3d2a55"/>
+    <rect x="888" y="70" width="90" height="220" rx="14" fill="#1a0f28"/>
+    <rect x="978" y="70" width="1" height="220" fill="#3d2a55"/>
+    <rect x="900" y="90" width="48" height="14" rx="4" fill="#e85d04"/>
+    <rect x="900" y="120" width="66" height="8" rx="2" fill="#4d3668"/>
+    <rect x="900" y="140" width="66" height="28" rx="4" fill="#3a2558"/>
+    <circle cx="952" cy="150" r="3" fill="#ff9f1c"/>
+    <rect x="900" y="178" width="50" height="6" rx="2" fill="#4d3668"/>
+    <rect x="996" y="100" width="120" height="12" rx="2" fill="#f5efe6"/>
+    <rect x="996" y="128" width="130" height="6" rx="2" fill="#4d3668"/>
+    <rect x="996" y="144" width="110" height="6" rx="2" fill="#4d3668"/>
+  </g>
+  <text x="1018" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#ff9f1c">Halloween</text>
+  <text x="600" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="600" fill="#18181b">Notes — calm writing</text>
+  <text x="600" y="408" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#71717a">Four themes · autosave · search · pins</text>
+</svg>
