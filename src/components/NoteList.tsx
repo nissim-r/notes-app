@@ -76,13 +76,11 @@ export function NoteList({
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => onOpenSearch?.()}
             placeholder="Search notes…"
-            className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm shadow-sm transition focus:outline-none focus:ring-2"
+            className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm shadow-sm transition focus-amber"
             style={{
               borderColor: "var(--border-strong)",
               background: "var(--surface-elevated)",
               color: "var(--text-primary)",
-              // @ts-expect-error CSS custom property for ring
-              "--tw-ring-color": "color-mix(in srgb, var(--accent-ring) 25%, transparent)",
             }}
             aria-label="Filter notes"
           />
@@ -97,7 +95,6 @@ export function NoteList({
             type="button"
             onClick={() => onOpenSearch?.()}
             className="transition hover:opacity-80"
-            style={{ color: "inherit" }}
           >
             ⌘K
           </button>
@@ -118,10 +115,7 @@ export function NoteList({
             }
           />
         ) : (
-          <ul
-            className="divide-y"
-            style={{ borderColor: "var(--border)" }}
-          >
+          <ul className="divide-y" style={{ borderColor: "var(--border)" }}>
             {sorted.map((note) => {
               const selected = note.id === activeId;
               return (
