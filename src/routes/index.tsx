@@ -15,7 +15,6 @@ function NotesApp() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const createNote = useNotesStore((s) => s.createNote);
 
-  // Global keyboard: N = new note (when not typing)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
@@ -39,23 +38,38 @@ function NotesApp() {
   }, [createNote]);
 
   return (
-    <div className="flex h-dvh min-h-dvh w-full overflow-hidden bg-zinc-50 dark:bg-zinc-950">
-      {/* Desktop sidebar */}
-      <aside className="hidden w-[300px] shrink-0 border-r border-zinc-200 md:flex md:flex-col lg:w-[320px] dark:border-zinc-800">
+    <div
+      className="flex h-dvh min-h-dvh w-full overflow-hidden"
+      style={{ background: "var(--surface-app)" }}
+    >
+      <aside
+        className="hidden w-[300px] shrink-0 border-r md:flex md:flex-col lg:w-[320px]"
+        style={{ borderColor: "var(--border)" }}
+      >
         <NoteList onOpenSearch={() => setPaletteOpen(true)} />
       </aside>
 
-      {/* Main editor */}
       <main className="min-w-0 flex-1">
         <NoteEditor onOpenList={() => setDrawerOpen(true)} />
       </main>
 
-      {/* Mobile note list drawer (vaul) */}
       <Drawer.Root open={drawerOpen} onOpenChange={setDrawerOpen}>
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 z-40 bg-zinc-900/30 backdrop-blur-[1px] md:hidden dark:bg-black/50" />
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 flex h-[85dvh] flex-col rounded-t-2xl border border-zinc-200 bg-zinc-50 outline-none md:hidden dark:border-zinc-800 dark:bg-zinc-950">
-            <div className="mx-auto mt-3 h-1 w-10 shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+          <Drawer.Overlay
+            className="fixed inset-0 z-40 backdrop-blur-[1px] md:hidden"
+            style={{ background: "var(--overlay)" }}
+          />
+          <Drawer.Content
+            className="fixed bottom-0 left-0 right-0 z-50 flex h-[85dvh] flex-col rounded-t-2xl border outline-none md:hidden"
+            style={{
+              borderColor: "var(--border)",
+              background: "var(--surface-app)",
+            }}
+          >
+            <div
+              className="mx-auto mt-3 h-1 w-10 shrink-0 rounded-full"
+              style={{ background: "var(--border-strong)" }}
+            />
             <Drawer.Title className="sr-only">Your notes</Drawer.Title>
             <Drawer.Description className="sr-only">
               Browse and open notes
