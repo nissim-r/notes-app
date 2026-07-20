@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Notes app Halloween theme">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#080210" flood-opacity="0.6"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0614"/>
+      <stop offset="100%" stop-color="#1a0f28"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="560" fill="url(#bg)"/>
+  <circle cx="100" cy="80" r="60" fill="#e85d04" opacity="0.08"/>
+  <circle cx="860" cy="480" r="70" fill="#9b5de5" opacity="0.1"/>
+  <rect x="48" y="40" width="864" height="480" rx="16" fill="#140a1f" filter="url(#shadow)" stroke="#3d2a55"/>
+  <rect x="48" y="40" width="280" height="480" rx="16" fill="#1a0f28"/>
+  <rect x="312" y="40" width="1" height="480" fill="#3d2a55"/>
+  <text x="72" y="78" font-family="Georgia, serif" font-size="22" font-weight="600" fill="#f5efe6">Notes</text>
+  <rect x="240" y="58" width="64" height="28" rx="8" fill="#e85d04"/>
+  <text x="272" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1a0a00">New</text>
+  <rect x="72" y="104" width="232" height="36" rx="8" fill="#241836" stroke="#4d3668"/>
+  <text x="88" y="126" font-family="system-ui,sans-serif" font-size="13" fill="#8a7499">Search notes…</text>
+  <rect x="48" y="160" width="264" height="72" fill="#3a2558b3"/>
+  <text x="72" y="188" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#f5efe6">Welcome to Notes</text>
+  <text x="72" y="210" font-family="system-ui,sans-serif" font-size="12" fill="#b8a4c9">A calm place for thoughts…</text>
+  <circle cx="300" cy="184" r="4" fill="#ff9f1c"/>
+  <text x="72" y="250" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#e8ddd0">Ideas worth keeping</text>
+  <text x="72" y="272" font-family="system-ui,sans-serif" font-size="12" fill="#b8a4c9">Morning pages without the…</text>
+  <text x="72" y="312" font-family="system-ui,sans-serif" font-size="14" font-weight="500" fill="#e8ddd0">Keyboard shortcuts</text>
+  <text x="72" y="334" font-family="system-ui,sans-serif" font-size="12" fill="#b8a4c9">N — New note · ⌘K search</text>
+  <rect x="313" y="40" width="599" height="480" fill="#1f1430"/>
+  <text x="360" y="72" font-family="system-ui,sans-serif" font-size="12" fill="#8a7499">Edited 3h ago</text>
+  <text x="360" y="140" font-family="Georgia, serif" font-size="32" font-weight="600" fill="#f5efe6">Welcome to Notes</text>
+  <text x="360" y="188" font-family="system-ui,sans-serif" font-size="15" fill="#e8ddd0">A calm place for thoughts.</text>
+  <text x="360" y="216" font-family="system-ui,sans-serif" font-size="15" fill="#e8ddd0">• Create a note with N</text>
+  <text x="360" y="240" font-family="system-ui,sans-serif" font-size="15" fill="#e8ddd0">• Search everything with ⌘K</text>
+  <text x="360" y="264" font-family="system-ui,sans-serif" font-size="15" fill="#e8ddd0">• Edits autosave as you type</text>
+  <rect x="360" y="290" width="48" height="3" rx="1.5" fill="#e85d04" opacity="0.75"/>
+  <text x="480" y="536" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#ff9f1c">Halloween</text>
+</svg>
