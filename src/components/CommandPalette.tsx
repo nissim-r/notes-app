@@ -46,28 +46,52 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
       <button
         type="button"
         aria-label="Close search"
-        className="absolute inset-0 bg-zinc-900/30 backdrop-blur-[2px] dark:bg-black/50"
+        className="absolute inset-0 backdrop-blur-[2px]"
+        style={{ background: "var(--overlay)" }}
         onClick={() => onOpenChange(false)}
       />
       <Command
-        className="relative z-10 w-full max-w-lg overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-2xl shadow-zinc-900/10 animate-fade-in dark:border-zinc-700 dark:bg-zinc-900 dark:shadow-black/40"
+        className="relative z-10 w-full max-w-lg overflow-hidden rounded-xl border animate-fade-in"
+        style={{
+          borderColor: "var(--border-strong)",
+          background: "var(--surface-elevated)",
+          boxShadow: "var(--shadow-elevated)",
+        }}
         label="Search notes"
         shouldFilter
       >
-        <div className="flex items-center gap-2 border-b border-zinc-100 px-3 dark:border-zinc-800">
-          <Search className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-500" strokeWidth={1.75} />
+        <div
+          className="flex items-center gap-2 border-b px-3"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <Search
+            className="h-4 w-4 shrink-0"
+            style={{ color: "var(--text-faint)" }}
+            strokeWidth={1.75}
+          />
           <Command.Input
             value={query}
             onValueChange={setQuery}
             placeholder="Search notes…"
-            className="h-12 w-full bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none dark:text-zinc-100 dark:placeholder:text-zinc-500"
+            className="h-12 w-full bg-transparent text-sm focus:outline-none"
+            style={{ color: "var(--text-primary)" }}
           />
-          <kbd className="hidden rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[10px] font-medium text-zinc-500 sm:inline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
+          <kbd
+            className="hidden rounded border px-1.5 py-0.5 text-[10px] font-medium sm:inline"
+            style={{
+              borderColor: "var(--kbd-border)",
+              background: "var(--kbd-bg)",
+              color: "var(--kbd-text)",
+            }}
+          >
             Esc
           </kbd>
         </div>
         <Command.List className="max-h-72 overflow-y-auto quiet-scroll p-1.5">
-          <Command.Empty className="px-3 py-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
+          <Command.Empty
+            className="px-3 py-8 text-center text-sm"
+            style={{ color: "var(--text-muted)" }}
+          >
             No notes match “{query}”
           </Command.Empty>
 
@@ -77,15 +101,20 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               createNote();
               onOpenChange(false);
             }}
-            className="flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-zinc-800 aria-selected:bg-amber-50 aria-selected:text-amber-900 dark:text-zinc-200 dark:aria-selected:bg-amber-950/50 dark:aria-selected:text-amber-200"
+            className="flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm"
+            style={{ color: "var(--text-secondary)" }}
           >
-            <Plus className="h-4 w-4 text-amber-600 dark:text-amber-400" strokeWidth={1.75} />
+            <Plus
+              className="h-4 w-4"
+              style={{ color: "var(--accent)" }}
+              strokeWidth={1.75}
+            />
             <span className="font-medium">New note</span>
           </Command.Item>
 
           <Command.Group
             heading="Notes"
-            className="[&_[cmdk-group-heading]]:px-2.5 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wide [&_[cmdk-group-heading]]:text-zinc-400 dark:[&_[cmdk-group-heading]]:text-zinc-500"
+            className="[&_[cmdk-group-heading]]:px-2.5 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wide"
           >
             {sorted.map((note) => (
               <Command.Item
@@ -95,26 +124,39 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                   setActiveId(note.id);
                   onOpenChange(false);
                 }}
-                className="flex cursor-pointer items-start gap-2.5 rounded-lg px-2.5 py-2 aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800"
+                className="flex cursor-pointer items-start gap-2.5 rounded-lg px-2.5 py-2"
               >
                 <FileText
-                  className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-500"
+                  className="mt-0.5 h-4 w-4 shrink-0"
+                  style={{ color: "var(--text-faint)" }}
                   strokeWidth={1.5}
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
-                    <span className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                    <span
+                      className="truncate text-sm font-medium"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {note.title.trim() || "Untitled"}
                     </span>
                     {note.pinned && (
-                      <Pin className="h-3 w-3 shrink-0 fill-amber-500 text-amber-500" />
+                      <Pin
+                        className="h-3 w-3 shrink-0"
+                        style={{ color: "var(--pin)", fill: "var(--pin)" }}
+                      />
                     )}
                   </div>
-                  <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">
+                  <p
+                    className="truncate text-xs"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     {notePreview(note.content, 60)}
                   </p>
                 </div>
-                <span className="shrink-0 text-[11px] text-zinc-400 dark:text-zinc-500">
+                <span
+                  className="shrink-0 text-[11px]"
+                  style={{ color: "var(--text-faint)" }}
+                >
                   {formatRelativeTime(note.updatedAt)}
                 </span>
               </Command.Item>
