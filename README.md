@@ -11,8 +11,18 @@ A polished note-taking app in the spirit of Linear and Things 3.
 - Split list | editor layout on desktop
 - Mobile: editor-first + drawer for the list (vaul)
 - localStorage persistence via zustand
-- Warm zinc neutrals + restrained amber accent
-- Source Serif 4 titles · DM Sans UI
+- **Themes** (palette menu): Light · Dark · Christmas · Halloween
+
+## Themes
+
+| Theme | Mood |
+|-------|------|
+| **Light** (default) | Warm zinc, white editor, amber accent |
+| **Dark** | Quiet night writing |
+| **Christmas** | Pine green, cream text, crimson & gold |
+| **Halloween** | Midnight purple, pumpkin orange, violet saved-dot |
+
+Open the **palette** icon in the notes list (or editor toolbar) to switch. Choice is saved in `localStorage`.
 
 ## Stack
 
@@ -29,4 +39,4 @@ npm run typecheck
 
 ## Design
 
-No purple gradients. Product UI: divide-y list rows, muted selected state, full-height editor, subtle autosave indicator.
+No purple gradients on the default themes. Product UI: divide-y list rows, muted selected state, full-height editor, subtle autosave indicator. Seasonal themes use full semantic color tokens so every surface re-tints cleanly.
